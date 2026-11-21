@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>My Little Aquarium — Official Links &amp; Android Beta</title>
+  <meta name="description" content="Make room for a virtual aquarium in your pocket. Join the My Little Aquarium Android Closed Beta directly on Google Play or connect with our community." />
+  <meta name="theme-color" content="#07212B" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="My Little Aquarium — Android Beta &amp; Official Links" />
+  <meta property="og:description" content="Start with a little tank. Join our Android Closed Beta directly in 2 taps — keep all your beta progress at launch." />
+  <meta property="og:url" content="https://mylittleaquarium.github.io/" />
+  <meta property="og:image" content="https://mylittleaquarium.github.io/assets/og-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@MyLilAquarium" />
+  <meta name="twitter:title" content="My Little Aquarium — Android Beta &amp; Official Links" />
+  <meta name="twitter:description" content="Join our Android Closed Beta directly in 2 taps or visit our community." />
+  <meta name="twitter:image" content="https://mylittleaquarium.github.io/assets/og-preview.png" />
+
+  <link rel="icon" type="image/png" href="./assets/icon.png" />
+  <link rel="apple-touch-icon" href="./assets/icon.png" />
+
+  <style>
+    :root {
+      --bg-top: #07212B;
+      --bg-mid: #0B2D38;
+      --bg-bot: #061A22;
+      --card-bg: rgba(12, 48, 60, 0.84);
+      --card-hero: linear-gradient(160deg, rgba(16, 68, 84, 0.94), rgba(10, 44, 56, 0.96));
+      --border: rgba(114, 218, 238, 0.22);
+      --border-strong: rgba(56, 206, 230, 0.55);
+      --text: #F2FAFC;
+      --muted: #B6D7E0;
+      --dim: #83AEB9;
+      --aqua: #26C6DA;
+      --aqua-bright: #5FE3F3;
+      --gold: #FFD375;
+      --gold-dark: #10323E;
+      --mint: #53E3B8;
+      --pill-bg: rgba(7, 29, 38, 0.72);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: radial-gradient(circle at 50% -10%, #145368 0%, var(--bg-top) 42%, var(--bg-bot) 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans JP", "Noto Sans SC", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Subtle floating ocean bubbles */
+    .bubbles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -80px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(95, 227, 243, 0.08) 65%, transparent 100%);
+      border: 1px solid rgba(150, 236, 248, 0.22);
+      animation: floatUp linear infinite;
+    }
+
+    .b1 { width: 18px; height: 18px; left: 10%; animation-duration: 14s; animation-delay: 0s; }
+    .b2 { width: 10px; height: 10px; left: 26%; animation-duration: 10s; animation-delay: 3s; }
+    .b3 { width: 26px; height: 26px; left: 48%; animation-duration: 18s; animation-delay: 1s; }
+    .b4 { width: 14px; height: 14px; left: 72%; animation-duration: 12s; animation-delay: 5s; }
+    .b5 { width: 20px; height: 20px; left: 88%; animation-duration: 16s; animation-delay: 2s; }
+    .b6 { width: 8px; height: 8px; left: 61%; animation-duration: 9s; animation-delay: 6s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.9); opacity: 0; }
+      12% { opacity: 0.7; }
+      85% { opacity: 0.55; }
+      100% { transform: translateY(-112vh) scale(1.12); opacity: 0; }
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px 16px 40px;
+    }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .lang-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-wrap span {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    select#lang-select {
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      padding-right: 4px;
+    }
+
+    select#lang-select option {
+      background: #0B2D38;
+      color: #F2FAFC;
+    }
+
+    /* Hero Header */
+    .hero {
+      text-align: center;
+      padding: 6px 8px 20px;
+    }
+
+    .logo-frame {
+      width: min(210px, 56vw);
+      margin: 0 auto 8px;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.42));
+    }
+
+    .logo-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-tagline {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #DFF6FA;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-sub {
+      margin: 4px 0 0;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    /* Cards */
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 28px rgba(3, 15, 20, 0.34);
+    }
+
+    .card-hero {
+      background: var(--card-hero);
+      border: 1.5px solid var(--border-strong);
+      box-shadow: 0 16px 36px rgba(3, 18, 26, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-live {
+      background: rgba(83, 227, 184, 0.16);
+      color: var(--mint);
+      border: 1px solid rgba(83, 227, 184, 0.42);
+    }
+
+    .badge-soon {
+      background: rgba(255, 211, 117, 0.14);
+      color: var(--gold);
+      border: 1px solid rgba(255, 211, 117, 0.35);
+    }
+
+    .card-desc {
+      margin: 0 0 14px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.14s ease, filter 0.14s ease, border-color 0.14s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.985);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #FFE08A 0%, #FFB84D 100%);
+      color: var(--gold-dark);
+      box-shadow: 0 8px 20px rgba(255, 196, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.04);
+    }
+
+    .btn-aqua {
+      background: linear-gradient(135deg, #2AD0E4 0%, #1599B8 100%);
+      color: #06212B;
+      box-shadow: 0 8px 20px rgba(38, 198, 218, 0.24);
+    }
+
+    .btn-aqua:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-secondary {
+      background: rgba(8, 34, 44, 0.78);
+      color: var(--text);
+      border: 1px solid rgba(114, 218, 238, 0.28);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(114, 218, 238, 0.6);
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .btn-primary .step-num {
+      background: rgba(16, 50, 62, 0.16);
+      color: var(--gold-dark);
+    }
+
+    .btn-aqua .step-num {
+      background: rgba(6, 33, 43, 0.16);
+      color: #06212B;
+    }
+
+    .btn-icon {
+      font-size: 19px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .btn-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .btn-label {
+      font-size: 14.5px;
+      line-height: 1.25;
+    }
+
+    .btn-sub {
+      font-size: 11.5px;
+      font-weight: 500;
+      opacity: 0.84;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    .arrow {
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .direct-store-row {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--dim);
+    }
+
+    .direct-store-row a {
+      color: var(--aqua-bright);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .direct-store-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* Helper / Fallback Box */
+    .helper-box {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 15px;
+      background: rgba(6, 25, 33, 0.72);
+      border: 1px dashed rgba(114, 218, 238, 0.3);
+    }
+
+    .helper-title {
+      margin: 0 0 5px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--aqua-bright);
+    }
+
+    .helper-tip {
+      margin: 0 0 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .gmail-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .gmail-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .support-row {
+      margin: 8px 0 0;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--dim);
+    }
+
+    .support-row a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    /* Compact iOS & Community cards */
+    .ios-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ios-desc {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="bubbles" aria-hidden="true">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+    <div class="bubble b5"></div>
+    <div class="bubble b6"></div>
+  </div>
+
+  <main class="wrap">
+    <div class="topbar">
+      <label class="lang-wrap" aria-label="Language">
+        <span aria-hidden="true">🌐</span>
+        <select id="lang-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="tr">Türkçe</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="pt">Português</option>
+          <option value="it">Italiano</option>
+          <option value="ru">Русский</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="zh">简体中文</option>
+        </select>
+      </label>
+    </div>
+
+    <header class="hero">
+      <div class="logo-frame">
+        <img src="./assets/logo.png" alt="My Little Aquarium" />
+      </div>
+      <p class="hero-tagline" id="t-tagline">A virtual aquarium in your pocket</p>
+      <p class="hero-sub" id="t-sub">Start small, grow together • Raise fry, plants &amp; explore</p>
+    </header>
+
+    <div class="stack">
+      <!-- Card 1: Direct Android Closed Beta (Zero Discord Needed) -->
+      <section class="card card-hero" aria-labelledby="t-beta-title">
+        <div class="card-head">
+          <h1 class="card-title" id="t-beta-title">🧪 Android Closed Beta</h1>
+          <span class="badge badge-live" id="t-beta-badge">Open Now</span>
+        </div>
+        <p class="card-desc" id="t-beta-desc">
+          Direct Google Play access in 2 taps — no Discord required. All your aquariums &amp; progress carry over permanently at launch.
+        </p>
+
+        <div class="steps">
+          <a
+            class="btn btn-primary"
+            href="https://groups.google.com/g/mylittleaquarium-beta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="btn-left">
+              <span class="step-num">1</span>
+              <div class="btn-text">
+                <span class="btn-label" id="t-step1-label">Join Beta Tester Group (1 Tap)</span>
+                <span class="btn-sub" id="t-step1-sub">Your email stays hidden from all other members</span>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="btn btn-aqua"
+            href="https://play.google.com/apps/testing/com.oyun.maviakvaryum.prototype"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="btn-left">
+              <span class="step-num">2</span>
+              <div class="btn-text">
+                <span class="btn-label" id="t-step2-label">Accept Test &amp; Download on Google Play</span>
+                <span class="btn-sub" id="t-step2-sub">Tap "Become a Tester" after completing Step 1</span>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <p class="direct-store-row">
+          <span id="t-already-opted">Already accepted?</span>
+          <a
+            id="t-store-link"
+            href="https://play.google.com/store/apps/details?id=com.oyun.maviakvaryum.prototype"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open Google Play Store</a>
+        </p>
+
+        <div class="helper-box">
+          <p class="helper-title" id="t-helper-title">Using Instagram’s built-in browser?</p>
+          <p class="helper-tip" id="t-helper-tip">
+            If Google asks you to sign in, tap ⋮ at top right and choose "Open in external browser", or join in 1 tap with your Gmail app below:
+          </p>
+          <a
+            class="gmail-btn"
+            href="mailto:mylittleaquarium-beta+subscribe@googlegroups.com?subject=Join%20My%20Little%20Aquarium%20Beta&body=Subscribe"
+          >
+            <span aria-hidden="true">✉️</span>
+            <span id="t-gmail-btn">Join Automatically via Gmail App (+Reply Confirmation)</span>
+          </a>
+          <p class="support-row">
+            <span id="t-support-pre">Need help?</span>
+            <a
+              id="t-support-link"
+              href="mailto:yilmazalicagatay@gmail.com?subject=My%20Little%20Aquarium%20Android%20Beta"
+            >Email the developer</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Card 2: iOS Status -->
+      <section class="card" aria-labelledby="t-ios-title">
+        <div class="ios-row">
+          <div>
+            <h2 class="card-title" id="t-ios-title">🍎 iOS / App Store</h2>
+            <p class="ios-desc" id="t-ios-desc">iPhone &amp; iPad release in preparation</p>
+          </div>
+          <span class="badge badge-soon" id="t-ios-badge">Coming Soon</span>
+        </div>
+      </section>
+
+      <!-- Card 3: Separate Community & Social -->
+      <section class="card" aria-labelledby="t-comm-title">
+        <div class="card-head">
+          <h2 class="card-title" id="t-comm-title">💬 Community &amp; Social</h2>
+        </div>
+        <p class="card-desc" id="t-comm-desc">
+          Optional spaces to share tanks, suggestions, and follow updates.
+        </p>
+
+        <div class="social-list">
+          <a
+            class="btn btn-secondary"
+            href="https://discord.gg/ZMyXMDa5DD"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="btn-left">
+              <span class="btn-icon" aria-hidden="true">🫧</span>
+              <div class="btn-text">
+                <span class="btn-label" id="t-discord-label">Official Discord Community</span>
+                <span class="btn-sub" id="t-discord-sub">11 language chats &amp; player showcase (Optional for Beta)</span>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://www.instagram.com/mylittleaquariumgame/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="btn-left">
+              <span class="btn-icon" aria-hidden="true">📸</span>
+              <div class="btn-text">
+                <span class="btn-label" id="t-ig-label">Instagram · @mylittleaquariumgame</span>
+                <span class="btn-sub" id="t-ig-sub">Updates, reels &amp; aquarium tips</span>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://x.com/MyLilAquarium"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="btn-left">
+              <span class="btn-icon" aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </span>
+              <div class="btn-text">
+                <span class="btn-label" id="t-x-label">X (Twitter) · @MyLilAquarium</span>
+                <span class="btn-sub" id="t-x-sub">News, dev updates &amp; announcements</span>
+              </div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a
+          id="t-privacy"
+          href="https://my-little-aquarium-privacy.fearlessosprey8.chatgpt.site/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Privacy Policy</a>
+        <span>•</span>
+        <a
+          id="t-rules"
+          href="https://my-little-aquarium-privacy.fearlessosprey8.chatgpt.site/community.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Community Rules</a>
+      </div>
+      <div>My Little Aquarium: Fish Care · Ali Çağatay Yılmaz</div>
+    </footer>
+  </main>
+
+  <script>
+    const I18N = {
+      en: {
+        title: "My Little Aquarium — Official Links & Android Beta",
+        tagline: "A virtual aquarium in your pocket",
+        sub: "Start small, grow together • Raise fry, plants & explore",
+        betaTitle: "🧪 Android Closed Beta",
+        betaBadge: "Open Now",
+        betaDesc: "Direct Google Play access in 2 taps — no Discord required. All your aquariums & progress carry over permanently at launch.",
+        step1Label: "Join Beta Tester Group (1 Tap)",
+        step1Sub: "Your email stays hidden from all other members",
+        step2Label: "Accept Test & Download on Google Play",
+        step2Sub: "Tap \"Become a Tester\" after completing Step 1",
+        alreadyOpted: "Already accepted?",
+        storeLink: "Open Google Play Store",
+        helperTitle: "Using Instagram’s built-in browser?",
+        helperTip: "If Google asks you to sign in, tap ⋮ at top right and choose \"Open in browser\", or join with your Gmail app below:",
+        gmailBtn: "Join via Gmail App (Reply to Confirm)",
+        supportPre: "Need help?",
+        supportLink: "Email the developer",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone & iPad release in preparation",
+        iosBadge: "Coming Soon",
+        commTitle: "💬 Community & Social",
+        commDesc: "Optional spaces to share tanks, suggestions, and follow updates.",
+        discordLabel: "Official Discord Community",
+        discordSub: "11 language chats & player showcase (Optional for Beta)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Updates, reels & aquarium tips",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "News, dev updates & announcements",
+        privacy: "Privacy Policy",
+        rules: "Community Rules"
+      },
+      tr: {
+        title: "My Little Aquarium — Android Beta & Resmi Bağlantılar",
+        tagline: "Cebinizde kendi sanal akvaryumunuz",
+        sub: "Küçük başla, birlikte büyüt • Yavru balıklar, bitkiler ve Keşfet",
+        betaTitle: "🧪 Android Kapalı Beta",
+        betaBadge: "Şimdi Açık",
+        betaDesc: "Discord veya VPN gerekmeden 2 adımda doğrudan Google Play'den indirin. Beta sürecindeki tüm ilerlemeniz tam sürüme kalıcı olarak aktarılır.",
+        step1Label: "Beta Test Grubuna Katıl (1 Tık)",
+        step1Sub: "E-posta adresiniz diğer üyelere tamamen gizlidir",
+        step2Label: "Testi Onayla & Google Play'den İndir",
+        step2Sub: "1. adımı tamamladıktan sonra \"Test kullanıcısı ol\" dokunun",
+        alreadyOpted: "Daha önce onayladınız mı?",
+        storeLink: "Google Play Mağazasını Aç",
+        helperTitle: "Instagram tarayıcısından mı açtınız?",
+        helperTip: "Google oturum açma isterse sağ üstten ⋮ -> \"Harici tarayıcıda aç\" (Chrome) seçin veya aşağıdan Gmail uygulamasıyla otomatik katılın:",
+        gmailBtn: "Gmail Uygulamasıyla Katıl (Gelen Maili Yanıtla)",
+        supportPre: "Sorun mu yaşıyorsunuz?",
+        supportLink: "Geliştiriciye e-posta gönder",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone ve iPad sürümü hazırlanıyor",
+        iosBadge: "Çok Yakında",
+        commTitle: "💬 Topluluk ve Sosyal Medya",
+        commDesc: "Akvaryumunu paylaşmak ve gelişmeleri takip etmek için isteğe bağlı kanallar.",
+        discordLabel: "Resmi Discord Sunucusu",
+        discordSub: "Topluluk sohbeti ve etkinlikler (Beta için gerekli değildir)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Güncellemeler, Reels videoları ve bakım ipuçları",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Duyurular, geliştirici notları ve haberler",
+        privacy: "Gizlilik Politikası",
+        rules: "Topluluk Kuralları"
+      },
+      de: {
+        title: "My Little Aquarium — Offizielle Links & Android Beta",
+        tagline: "Dein virtuelles Aquarium für die Hosentasche",
+        sub: "Klein anfangen, gemeinsam wachsen • Fische, Pflanzen & Entdecken",
+        betaTitle: "🧪 Android Closed Beta",
+        betaBadge: "Jetzt offen",
+        betaDesc: "Direkter Google-Play-Zugang in 2 Schritten — kein Discord nötig. Dein Fortschritt bleibt zum Release dauerhaft erhalten.",
+        step1Label: "Beta-Testgruppe beitreten (1 Klick)",
+        step1Sub: "Deine E-Mail-Adresse bleibt für andere unsichtbar",
+        step2Label: "Test annehmen & bei Google Play laden",
+        step2Sub: "Nach Schritt 1 einfach auf „Tester werden“ tippen",
+        alreadyOpted: "Schon beigetreten?",
+        storeLink: "Google Play Store öffnen",
+        helperTitle: "Im Instagram-Browser geöffnet?",
+        helperTip: "Falls Google nach dem Login fragt, tippe oben rechts auf ⋮ → „Im Browser öffnen“, oder nutze deine Gmail-App:",
+        gmailBtn: "Über Gmail-App beitreten (Antwort bestätigen)",
+        supportPre: "Hilfe nötig?",
+        supportLink: "Entwickler per E-Mail kontaktieren",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone- & iPad-Version in Vorbereitung",
+        iosBadge: "Bald verfügbar",
+        commTitle: "💬 Community & Social",
+        commDesc: "Optionale Kanäle für Tipps, Feedback und Aquarien-Vorstellungen.",
+        discordLabel: "Offizieller Discord-Server",
+        discordSub: "11 Sprachkanäle & Community (für Beta optional)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Updates, Reels & Pflege-Tipps",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Neuigkeiten, Entwickler-Updates & Ankündigungen",
+        privacy: "Datenschutz",
+        rules: "Community-Regeln"
+      },
+      fr: {
+        title: "My Little Aquarium — Liens officiels & Bêta Android",
+        tagline: "Un aquarium virtuel dans votre poche",
+        sub: "Commencez petit, grandissez ensemble • Poissons, plantes & Explorer",
+        betaTitle: "🧪 Bêta fermée Android",
+        betaBadge: "Ouverte",
+        betaDesc: "Accès direct à Google Play en 2 clics — aucun compte Discord requis. Votre progression est conservée pour le lancement.",
+        step1Label: "Rejoindre le groupe Bêta (1 clic)",
+        step1Sub: "Votre adresse e-mail reste privée pour tous les membres",
+        step2Label: "Accepter et télécharger sur Google Play",
+        step2Sub: "Appuyez sur « Devenir testeur » après l'étape 1",
+        alreadyOpted: "Déjà inscrit ?",
+        storeLink: "Ouvrir Google Play",
+        helperTitle: "Dans le navigateur d’Instagram ?",
+        helperTip: "Si Google demande une connexion, touchez ⋮ en haut à droite → « Ouvrir dans le navigateur », ou passez par Gmail :",
+        gmailBtn: "Rejoindre via Gmail (Répondre pour confirmer)",
+        supportPre: "Besoin d’aide ?",
+        supportLink: "Écrire au développeur",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "Version iPhone & iPad en préparation",
+        iosBadge: "Bientôt disponible",
+        commTitle: "💬 Communauté & Réseaux",
+        commDesc: "Espaces optionnels pour partager vos aquariums et suivre l’actu.",
+        discordLabel: "Serveur Discord officiel",
+        discordSub: "Salons en 11 langues & entraide (Optionnel pour la Bêta)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Actualités, Reels et astuces d’aquariophilie",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Actualités, mises à jour et annonces",
+        privacy: "Confidentialité",
+        rules: "Règles de la communauté"
+      },
+      es: {
+        title: "My Little Aquarium — Enlaces oficiales y Beta Android",
+        tagline: "Un acuario virtual en tu bolsillo",
+        sub: "Empieza poco a poco, creced juntos • Peces, plantas y Explorar",
+        betaTitle: "🧪 Beta cerrada de Android",
+        betaBadge: "Abierta",
+        betaDesc: "Acceso directo en Google Play en 2 toques — sin necesidad de Discord. Todo tu progreso se guarda para el lanzamiento.",
+        step1Label: "Unirse al grupo Beta (1 toque)",
+        step1Sub: "Tu correo electrónico permanece oculto para los demás",
+        step2Label: "Aceptar y descargar en Google Play",
+        step2Sub: "Pulsa «Convertirse en tester» después del paso 1",
+        alreadyOpted: "¿Ya te uniste?",
+        storeLink: "Abrir Google Play Store",
+        helperTitle: "¿Usas el navegador de Instagram?",
+        helperTip: "Si Google pide iniciar sesión, toca ⋮ arriba a la derecha → «Abrir en el navegador», o únete desde tu app de Gmail:",
+        gmailBtn: "Unirse con la app de Gmail (Responder para confirmar)",
+        supportPre: "¿Necesitas ayuda?",
+        supportLink: "Escribir al desarrollador",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "Versión para iPhone y iPad en preparación",
+        iosBadge: "Próximamente",
+        commTitle: "💬 Comunidad y Redes",
+        commDesc: "Espacios opcionales para compartir acuarios y novedades.",
+        discordLabel: "Comunidad oficial en Discord",
+        discordSub: "Chats en 11 idiomas y galería (Opcional para la Beta)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Novedades, Reels y consejos",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Noticias, actualizaciones y anuncios",
+        privacy: "Política de privacidad",
+        rules: "Normas de la comunidad"
+      },
+      pt: {
+        title: "My Little Aquarium — Links Oficiais e Beta Android",
+        tagline: "Um aquário virtual no seu bolso",
+        sub: "Comece pequeno, cresça junto • Peixes, plantas e Explorar",
+        betaTitle: "🧪 Beta Fechado Android",
+        betaBadge: "Aberto Agora",
+        betaDesc: "Acesso direto na Google Play em 2 toques — sem precisar de Discord. Todo o seu progresso é mantido no lançamento.",
+        step1Label: "Entrar no Grupo Beta (1 toque)",
+        step1Sub: "Seu e-mail fica oculto para todos os outros membros",
+        step2Label: "Aceitar e baixar na Google Play",
+        step2Sub: "Toque em \"Tornar-se testador\" após concluir a Etapa 1",
+        alreadyOpted: "Já aceitou o convite?",
+        storeLink: "Abrir Google Play Store",
+        helperTitle: "No navegador do Instagram?",
+        helperTip: "Se o Google pedir login, toque em ⋮ no topo → \"Abrir no navegador\", ou entre pelo seu app do Gmail abaixo:",
+        gmailBtn: "Entrar via App Gmail (Responda para confirmar)",
+        supportPre: "Precisa de ajuda?",
+        supportLink: "Enviar e-mail ao desenvolvedor",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "Versão para iPhone e iPad em preparação",
+        iosBadge: "Em breve",
+        commTitle: "💬 Comunidade e Redes",
+        commDesc: "Espaços opcionais para mostrar seus aquários e novidades.",
+        discordLabel: "Comunidade Oficial no Discord",
+        discordSub: "Chats em 11 idiomas e sugestões (Opcional para o Beta)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Novidades, Reels e dicas de cuidados",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Notícias, atualizações e anúncios",
+        privacy: "Privacidade",
+        rules: "Regras da comunidade"
+      },
+      it: {
+        title: "My Little Aquarium — Link Ufficiali e Beta Android",
+        tagline: "Un acquario virtuale sempre in tasca",
+        sub: "Inizia in piccolo, cresci insieme • Pesci, piante ed Esplora",
+        betaTitle: "🧪 Closed Beta Android",
+        betaBadge: "Aperta ora",
+        betaDesc: "Accesso diretto su Google Play in 2 tocchi — nessun account Discord richiesto. I tuoi progressi restano al lancio.",
+        step1Label: "Unisciti al gruppo Beta (1 tocco)",
+        step1Sub: "La tua email rimane nascosta agli altri membri",
+        step2Label: "Accetta e scarica su Google Play",
+        step2Sub: "Tocca \"Diventa tester\" dopo aver completato il passo 1",
+        alreadyOpted: "Hai già accettato?",
+        storeLink: "Apri Google Play Store",
+        helperTitle: "Stai usando il browser di Instagram?",
+        helperTip: "Se Google chiede l'accesso, tocca ⋮ in alto a destra → \"Apri nel browser\", oppure unisciti tramite Gmail:",
+        gmailBtn: "Unisciti con l'app Gmail (Rispondi per confermare)",
+        supportPre: "Serve aiuto?",
+        supportLink: "Scrivi allo sviluppatore",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "Versione iPhone e iPad in preparazione",
+        iosBadge: "Prossimamente",
+        commTitle: "💬 Community e Social",
+        commDesc: "Spazi facoltativi per condividere acquari e aggiornamenti.",
+        discordLabel: "Community ufficiale Discord",
+        discordSub: "Chat in 11 lingue e consigli (Facoltativo per la Beta)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Aggiornamenti, Reel e guide",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Novità, aggiornamenti e annunci",
+        privacy: "Privacy Policy",
+        rules: "Regole della community"
+      },
+      ru: {
+        title: "My Little Aquarium — Официальные ссылки и Бета Android",
+        tagline: "Уютный виртуальный аквариум в кармане",
+        sub: "Начните с малого • Рыбки, живые растения и режим Обзор",
+        betaTitle: "🧪 Закрытая бета Android",
+        betaBadge: "Открыта",
+        betaDesc: "Прямой доступ в Google Play в 2 нажатия — Discord не требуется. Весь прогресс сохранится навсегда к выходу игры.",
+        step1Label: "Вступить в бета-группу (1 клик)",
+        step1Sub: "Ваш email скрыт от других участников группы",
+        step2Label: "Принять участие и скачать в Google Play",
+        step2Sub: "Нажмите «Стать тестировщиком» после Шага 1",
+        alreadyOpted: "Уже подтвердили?",
+        storeLink: "Открыть Google Play",
+        helperTitle: "Открыто во встроенном браузере Instagram?",
+        helperTip: "Если Google попросит войти, нажмите ⋮ сверху справа → «Открыть в браузере» или отправьте заявку через Gmail:",
+        gmailBtn: "Войти через приложение Gmail (ответьте на письмо)",
+        supportPre: "Нужна помощь?",
+        supportLink: "Написать разработчику",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "Версия для iPhone и iPad в разработке",
+        iosBadge: "Скоро",
+        commTitle: "💬 Сообщество и соцсети",
+        commDesc: "Необязательные каналы для общения и новостей.",
+        discordLabel: "Официальный Discord-сервер",
+        discordSub: "Чаты на 11 языках и отзывы (для беты не требуется)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "Новости, Reels и советы по уходу",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "Новости, обновления и анонсы",
+        privacy: "Политика конфиденциальности",
+        rules: "Правила сообщества"
+      },
+      ja: {
+        title: "My Little Aquarium — 公式リンク＆Androidベータ",
+        tagline: "ポケットの中に小さなアクアリウムを",
+        sub: "小さな水槽から始めよう • 稚魚の育成・水草・他プレイヤー訪問",
+        betaTitle: "🧪 Android クローズドベータ",
+        betaBadge: "参加受付中",
+        betaDesc: "Discord不要・2タップでGoogle Playからすぐダウンロード。ベータの進行データは正式リリースへそのまま引き継がれます。",
+        step1Label: "ベータテスターグループに参加（1タップ）",
+        step1Sub: "メールアドレスは他の参加者に非公開です",
+        step2Label: "テストを承認してGoogle Playで入手",
+        step2Sub: "ステップ1完了後「テスターになる」をタップ",
+        alreadyOpted: "承認済みの方はこちら：",
+        storeLink: "Google Play ストアを開く",
+        helperTitle: "Instagram内ブラウザで開いていますか？",
+        helperTip: "Googleのログイン画面が出たら右上の ⋮ →「外部ブラウザで開く」を選ぶか、下のGmailアプリから参加できます：",
+        gmailBtn: "Gmailアプリで参加（確認メールに返信）",
+        supportPre: "お困りですか？",
+        supportLink: "開発者にメールする",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone・iPad版を準備中",
+        iosBadge: "近日公開",
+        commTitle: "💬 コミュニティ＆SNS",
+        commDesc: "水槽の共有や最新情報チェックはこちら（ベータ参加には任意）。",
+        discordLabel: "公式 Discord コミュニティ",
+        discordSub: "11言語チャット＆フィードバック（ベータ必須ではありません）",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "アップデート情報・リール動画",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "最新ニュース・開発アップデート・お知らせ",
+        privacy: "プライバシーポリシー",
+        rules: "コミュニティルール"
+      },
+      ko: {
+        title: "My Little Aquarium — 공식 링크 & Android 베타",
+        tagline: "내 손안의 작은 가상 아쿠아리움",
+        sub: "작은 수조에서 시작해 함께 키워 보세요 • 물고기, 수초 & 탐험",
+        betaTitle: "🧪 Android 비공개 베타",
+        betaBadge: "참여 가능",
+        betaDesc: "Discord 없이 2번의 탭으로 Google Play에서 바로 다운로드하세요. 모든 베타 진행 데이터는 정식 출시 후에도 영구 유지됩니다.",
+        step1Label: "베타 테스터 그룹 가입 (1탭)",
+        step1Sub: "이메일 주소는 다른 멤버에게 완전히 비공개입니다",
+        step2Label: "테스트 수락 후 Google Play 다운로드",
+        step2Sub: "1단계 완료 후 '테스터 되기'를 누르세요",
+        alreadyOpted: "이미 수락하셨나요?",
+        storeLink: "Google Play 스토어 열기",
+        helperTitle: "Instagram 인앱 브라우저를 사용 중인가요?",
+        helperTip: "Google 로그인 화면이 나오면 오른쪽 위 ⋮ → '외부 브라우저에서 열기'를 선택하거나 아래 Gmail 앱으로 참여하세요:",
+        gmailBtn: "Gmail 앱으로 자동 가입 (답장 확인)",
+        supportPre: "도움이 필요하신가요?",
+        supportLink: "개발자에게 이메일 보내기",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone 및 iPad 출시 준비 중",
+        iosBadge: "출시 예정",
+        commTitle: "💬 커뮤니티 & 소셜",
+        commDesc: "수조 자랑과 업데이트 소식을 위한 선택형 공간입니다.",
+        discordLabel: "공식 Discord 커뮤니티",
+        discordSub: "11개 언어 채팅 & 소통 (베타 참여에 필수 아님)",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "업데이트 소식, 릴스 및 관리 팁",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "최신 소식, 개발 업데이트 및 공지사항",
+        privacy: "개인정보 처리방침",
+        rules: "커뮤니티 규칙"
+      },
+      zh: {
+        title: "My Little Aquarium — 官方链接与 Android 封测",
+        tagline: "口袋里的专属虚拟水族箱",
+        sub: "从小小鱼缸开始共同成长 • 养鱼、水草与拜访玩家",
+        betaTitle: "🧪 Android 封闭测试",
+        betaBadge: "开放参与",
+        betaDesc: "无需 Discord，两步即可直接从 Google Play 下载。测试期间的所有水族箱与养成进度将永久保留至正式版。",
+        step1Label: "加入封测测试组（一键）",
+        step1Sub: "您的邮箱对其他成员完全隐藏保密",
+        step2Label: "确认测试并在 Google Play 下载",
+        step2Sub: "完成第 1 步后点击“成为测试人员”",
+        alreadyOpted: "已经确认资格？",
+        storeLink: "打开 Google Play 商店",
+        helperTitle: "正在使用 Instagram 内置浏览器？",
+        helperTip: "如 Google 提示登录，请点击右上角 ⋮ →“在浏览器中打开”，或直接通过下方 Gmail 应用一键申请：",
+        gmailBtn: "通过 Gmail 应用加入（回复确认邮件即可）",
+        supportPre: "遇到问题？",
+        supportLink: "联系开发者邮箱",
+        iosTitle: "🍎 iOS / App Store",
+        iosDesc: "iPhone 与 iPad 版本筹备中",
+        iosBadge: "即将推出",
+        commTitle: "💬 玩家社区与社交账号",
+        commDesc: "分享造景与获取更新资讯（封测下载不强制加入）。",
+        discordLabel: "官方 Discord 社区",
+        discordSub: "11 种语言交流频道与反馈（非封测必需）",
+        igLabel: "Instagram · @mylittleaquariumgame",
+        igSub: "游戏动态、Reels 视频与养护指南",
+        xLabel: "X (Twitter) · @MyLilAquarium",
+        xSub: "最新资讯、开发动态与官方公告",
+        privacy: "隐私政策",
+        rules: "社区规则"
+      }
+    };
+
+    const MAP = [
+      ["t-tagline", "tagline"],
+      ["t-sub", "sub"],
+      ["t-beta-title", "betaTitle"],
+      ["t-beta-badge", "betaBadge"],
+      ["t-beta-desc", "betaDesc"],
+      ["t-step1-label", "step1Label"],
+      ["t-step1-sub", "step1Sub"],
+      ["t-step2-label", "step2Label"],
+      ["t-step2-sub", "step2Sub"],
+      ["t-already-opted", "alreadyOpted"],
+      ["t-store-link", "storeLink"],
+      ["t-helper-title", "helperTitle"],
+      ["t-helper-tip", "helperTip"],
+      ["t-gmail-btn", "gmailBtn"],
+      ["t-support-pre", "supportPre"],
+      ["t-support-link", "supportLink"],
+      ["t-ios-title", "iosTitle"],
+      ["t-ios-desc", "iosDesc"],
+      ["t-ios-badge", "iosBadge"],
+      ["t-comm-title", "commTitle"],
+      ["t-comm-desc", "commDesc"],
+      ["t-discord-label", "discordLabel"],
+      ["t-discord-sub", "discordSub"],
+      ["t-ig-label", "igLabel"],
+      ["t-ig-sub", "igSub"],
+      ["t-x-label", "xLabel"],
+      ["t-x-sub", "xSub"],
+      ["t-privacy", "privacy"],
+      ["t-rules", "rules"]
+    ];
+
+    function detectLang() {
+      const qs = new URLSearchParams(window.location.search).get("lang");
+      const raw = (qs || navigator.language || "en").toLowerCase();
+      const base = raw.split("-")[0];
+      if (I18N[raw]) return raw;
+      if (I18N[base]) return base;
+      if (raw.startsWith("zh")) return "zh";
+      return "en";
+    }
+
+    function applyLang(code) {
+      const lang = I18N[code] ? code : "en";
+      const t = I18N[lang];
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+      document.title = t.title;
+      for (const [id, key] of MAP) {
+        const el = document.getElementById(id);
+        if (el && t[key]) el.textContent = t[key];
+      }
+      const sel = document.getElementById("lang-select");
+      if (sel && sel.value !== lang) sel.value = lang;
+    }
+
+    const selectEl = document.getElementById("lang-select");
+    selectEl.addEventListener("change", (e) => applyLang(e.target.value));
+    applyLang(detectLang());
+  </script>
+</body>
+</html>
