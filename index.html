@@ -235,9 +235,81 @@
     }
 
     .card-desc {
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       font-size: 13.5px;
       color: var(--muted);
+    }
+
+    /* Gameplay Preview Strip */
+    .preview-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+
+    .preview-item {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .preview-frame {
+      position: relative;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 1px solid rgba(114, 218, 238, 0.34);
+      background: #08242E;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 4px 12px rgba(3, 15, 20, 0.36);
+    }
+
+    .preview-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-caption {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .perks-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+    }
+
+    .perk-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(83, 227, 184, 0.11);
+      border: 1px solid rgba(83, 227, 184, 0.28);
+      color: #CFF7EB;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .trust-note {
+      margin: 8px 2px 0;
+      font-size: 11.5px;
+      color: var(--dim);
+      line-height: 1.4;
+      text-align: center;
     }
 
     .steps {
@@ -524,6 +596,33 @@
           Direct Google Play access in 2 taps. All your aquariums &amp; progress carry over permanently at launch.
         </p>
 
+        <div class="preview-strip" aria-label="In-game screenshots">
+          <figure class="preview-item">
+            <div class="preview-frame">
+              <img src="./assets/preview_forest_neons.jpg" alt="Planted Forest aquarium with Neon Tetras" />
+            </div>
+            <figcaption class="preview-caption" id="t-prev1">Forest Tank</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <div class="preview-frame">
+              <img src="./assets/preview_zen_night.jpg" alt="Zen night tank with auto clip-on LED glow" loading="lazy" />
+            </div>
+            <figcaption class="preview-caption" id="t-prev2">Day/Night LED</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <div class="preview-frame">
+              <img src="./assets/preview_coastal_betta.jpg" alt="Coastal tank with Betta and living plants" loading="lazy" />
+            </div>
+            <figcaption class="preview-caption" id="t-prev3">Coastal Care</figcaption>
+          </figure>
+        </div>
+
+        <div class="perks-row">
+          <span class="perk-pill" id="t-perk1">💾 Progress Saved</span>
+          <span class="perk-pill" id="t-perk2">⚡ 10s Access</span>
+          <span class="perk-pill" id="t-perk3">🔒 Zero Spam</span>
+        </div>
+
         <div class="steps">
           <a
             class="btn btn-primary"
@@ -557,6 +656,10 @@
             <span class="arrow" aria-hidden="true">→</span>
           </a>
         </div>
+
+        <p class="trust-note" id="t-trust-note">
+          Google Play requires group access for Closed Beta — instant unlock, no marketing emails.
+        </p>
 
         <p class="direct-store-row">
           <span id="t-already-opted">Already accepted?</span>
@@ -729,6 +832,13 @@
         betaTitle: "🧪 Android Closed Beta",
         betaBadge: "Open Now",
         betaDesc: "Direct Google Play access in 2 taps. All your aquariums & progress carry over permanently at launch.",
+        preview1: "Forest Tank",
+        preview2: "Day/Night LED",
+        preview3: "Coastal Care",
+        perk1: "💾 Progress Saved",
+        perk2: "⚡ 10s Access",
+        perk3: "🔒 Zero Spam",
+        trustNote: "Google Play requires group access for Closed Beta — instant unlock, no marketing emails.",
         step1Label: "Join Beta Tester Group (1 Tap)",
         step1Sub: "Your email stays hidden from all other members",
         step2Label: "Accept Test & Download on Google Play",
@@ -765,6 +875,13 @@
         betaTitle: "🧪 Android Kapalı Beta",
         betaBadge: "Şimdi Açık",
         betaDesc: "2 adımda doğrudan Google Play'den indirin. Beta sürecindeki tüm ilerlemeniz tam sürüme kalıcı olarak aktarılır.",
+        preview1: "Orman Akvaryumu",
+        preview2: "Gece/Gündüz LED",
+        preview3: "Kıyı Bakımı",
+        perk1: "💾 İlerleme Kaydedilir",
+        perk2: "⚡ 10 Sn Erişim",
+        perk3: "🔒 Spam Yok",
+        trustNote: "Google Play Kapalı Beta kuralı gereği erişimi anında açar — pazarlama e-postası gönderilmez.",
         step1Label: "Beta Test Grubuna Katıl (1 Tık)",
         step1Sub: "E-posta adresiniz diğer üyelere tamamen gizlidir",
         step2Label: "Testi Onayla & Google Play'den İndir",
@@ -801,6 +918,13 @@
         betaTitle: "🧪 Android Closed Beta",
         betaBadge: "Jetzt offen",
         betaDesc: "Direkter Google-Play-Zugang in 2 Schritten. Dein Fortschritt bleibt zum Release dauerhaft erhalten.",
+        preview1: "Wald-Aquarium",
+        preview2: "Tag/Nacht-LED",
+        preview3: "Küsten-Pflege",
+        perk1: "💾 Spielstand bleibt",
+        perk2: "⚡ In 10s bereit",
+        perk3: "🔒 Kein Spam",
+        trustNote: "Google Play verlangt den Gruppenbeitritt für die Closed Beta — sofort frei, ohne Werbemails.",
         step1Label: "Beta-Testgruppe beitreten (1 Klick)",
         step1Sub: "Deine E-Mail-Adresse bleibt für andere unsichtbar",
         step2Label: "Test annehmen & bei Google Play laden",
@@ -837,6 +961,13 @@
         betaTitle: "🧪 Bêta fermée Android",
         betaBadge: "Ouverte",
         betaDesc: "Accès direct à Google Play en 2 clics. Votre progression est conservée pour le lancement.",
+        preview1: "Bac Forêt",
+        preview2: "LED Jour/Nuit",
+        preview3: "Bac Côtier",
+        perk1: "💾 Progrès gardé",
+        perk2: "⚡ Accès 10s",
+        perk3: "🔒 Zéro spam",
+        trustNote: "Google Play exige l'adhésion au groupe pour la Bêta fermée — accès immédiat, sans e-mails pub.",
         step1Label: "Rejoindre le groupe Bêta (1 clic)",
         step1Sub: "Votre adresse e-mail reste privée pour tous les membres",
         step2Label: "Accepter et télécharger sur Google Play",
@@ -873,6 +1004,13 @@
         betaTitle: "🧪 Beta cerrada de Android",
         betaBadge: "Abierta",
         betaDesc: "Acceso directo en Google Play en 2 toques. Todo tu progreso se guarda para el lanzamiento.",
+        preview1: "Acuario Bosque",
+        preview2: "LED Día/Noche",
+        preview3: "Cuidado Costa",
+        perk1: "💾 Progreso guardado",
+        perk2: "⚡ Acceso 10s",
+        perk3: "🔒 Cero spam",
+        trustNote: "Google Play exige unirse al grupo para la Beta cerrada — acceso al instante y sin correos de spam.",
         step1Label: "Unirse al grupo Beta (1 toque)",
         step1Sub: "Tu correo electrónico permanece oculto para los demás",
         step2Label: "Aceptar y descargar en Google Play",
@@ -909,6 +1047,13 @@
         betaTitle: "🧪 Beta Fechado Android",
         betaBadge: "Aberto Agora",
         betaDesc: "Acesso direto na Google Play em 2 toques. Todo o seu progresso é mantido no lançamento.",
+        preview1: "Aquário Floresta",
+        preview2: "LED Dia/Noite",
+        preview3: "Cuidado Costeiro",
+        perk1: "💾 Progresso salvo",
+        perk2: "⚡ Acesso 10s",
+        perk3: "🔒 Zero spam",
+        trustNote: "O Google Play exige o grupo para o Beta Fechado — liberação na hora, sem e-mails de spam.",
         step1Label: "Entrar no Grupo Beta (1 toque)",
         step1Sub: "Seu e-mail fica oculto para todos os outros membros",
         step2Label: "Aceitar e baixar na Google Play",
@@ -945,6 +1090,13 @@
         betaTitle: "🧪 Closed Beta Android",
         betaBadge: "Aperta ora",
         betaDesc: "Accesso diretto su Google Play in 2 tocchi. I tuoi progressi restano al lancio.",
+        preview1: "Vasca Foresta",
+        preview2: "LED Giorno/Notte",
+        preview3: "Cura Costiera",
+        perk1: "💾 Progressi salvati",
+        perk2: "⚡ Accesso 10s",
+        perk3: "🔒 Zero spam",
+        trustNote: "Google Play richiede l'accesso al gruppo per la Closed Beta — sblocco immediato, zero email.",
         step1Label: "Unisciti al gruppo Beta (1 tocco)",
         step1Sub: "La tua email rimane nascosta agli altri membri",
         step2Label: "Accetta e scarica su Google Play",
@@ -981,6 +1133,13 @@
         betaTitle: "🧪 Закрытая бета Android",
         betaBadge: "Открыта",
         betaDesc: "Прямой доступ в Google Play в 2 нажатия. Весь прогресс сохранится навсегда к выходу игры.",
+        preview1: "Лесной аквариум",
+        preview2: "День/Ночь LED",
+        preview3: "Береговой уход",
+        perk1: "💾 Прогресс сохранится",
+        perk2: "⚡ Доступ за 10 с",
+        perk3: "🔒 Без спама",
+        trustNote: "Для закрытой беты Google Play нужен вход в группу — доступ открывается сразу, без рассылок.",
         step1Label: "Вступить в бета-группу (1 клик)",
         step1Sub: "Ваш email скрыт от других участников группы",
         step2Label: "Принять участие и скачать в Google Play",
@@ -1017,6 +1176,13 @@
         betaTitle: "🧪 Android クローズドベータ",
         betaBadge: "参加受付中",
         betaDesc: "2タップでGoogle Playからすぐダウンロード。ベータの進行データは正式リリースへそのまま引き継がれます。",
+        preview1: "フォレスト水槽",
+        preview2: "昼夜LEDライト",
+        preview3: "コースト育成",
+        perk1: "💾 データ引き継ぎ",
+        perk2: "⚡ 10秒で参加",
+        perk3: "🔒 スパムなし",
+        trustNote: "Google Playのクローズドベータ参加にグループ登録が必要です。即開放・広告メールなし。",
         step1Label: "ベータテスターグループに参加（1タップ）",
         step1Sub: "メールアドレスは他の参加者に非公開です",
         step2Label: "テストを承認してGoogle Playで入手",
@@ -1053,6 +1219,13 @@
         betaTitle: "🧪 Android 비공개 베타",
         betaBadge: "참여 가능",
         betaDesc: "2번의 탭으로 Google Play에서 바로 다운로드하세요. 모든 베타 진행 데이터는 정식 출시 후에도 영구 유지됩니다.",
+        preview1: "포레스트 수조",
+        preview2: "주야간 LED",
+        preview3: "코스트 케어",
+        perk1: "💾 진행도 영구 저장",
+        perk2: "⚡ 10초 참여",
+        perk3: "🔒 스팸 없음",
+        trustNote: "Google Play 비공개 베타 정책상 그룹 가입 시 즉시 다운로드가 열리며 스팸 메일은 없습니다.",
         step1Label: "베타 테스터 그룹 가입 (1탭)",
         step1Sub: "이메일 주소는 다른 멤버에게 완전히 비공개입니다",
         step2Label: "테스트 수락 후 Google Play 다운로드",
@@ -1089,6 +1262,13 @@
         betaTitle: "🧪 Android 封闭测试",
         betaBadge: "开放参与",
         betaDesc: "两步即可直接从 Google Play 下载。测试期间的所有水族箱与养成进度将永久保留至正式版。",
+        preview1: "森林水草缸",
+        preview2: "昼夜自动灯光",
+        preview3: "海岸养护缸",
+        perk1: "💾 进度永久保留",
+        perk2: "⚡ 10秒解锁",
+        perk3: "🔒 零垃圾邮件",
+        trustNote: "Google Play 封测要求加入测试组即可立即解锁下载，绝不发送营销邮件。",
         step1Label: "加入封测测试组（一键）",
         step1Sub: "您的邮箱对其他成员完全隐藏保密",
         step2Label: "确认测试并在 Google Play 下载",
@@ -1126,6 +1306,13 @@
       ["t-beta-title", "betaTitle"],
       ["t-beta-badge", "betaBadge"],
       ["t-beta-desc", "betaDesc"],
+      ["t-prev1", "preview1"],
+      ["t-prev2", "preview2"],
+      ["t-prev3", "preview3"],
+      ["t-perk1", "perk1"],
+      ["t-perk2", "perk2"],
+      ["t-perk3", "perk3"],
+      ["t-trust-note", "trustNote"],
       ["t-step1-label", "step1Label"],
       ["t-step1-sub", "step1Sub"],
       ["t-step2-label", "step2Label"],
