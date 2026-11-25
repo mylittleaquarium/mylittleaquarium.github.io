@@ -234,6 +234,12 @@
       border: 1px solid rgba(255, 211, 117, 0.35);
     }
 
+    .badge-waitlist {
+      background: rgba(82, 214, 240, 0.16);
+      color: #8DEEFF;
+      border: 1px solid rgba(82, 214, 240, 0.42);
+    }
+
     .card-desc {
       margin: 0 0 12px;
       font-size: 13.5px;
@@ -508,9 +514,99 @@
     }
 
     .ios-desc {
-      margin: 4px 0 0;
-      font-size: 13px;
+      margin: 6px 0 12px;
+      font-size: 13.5px;
       color: var(--muted);
+    }
+
+    .ios-form {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .ios-input {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 13px;
+      border: 1px solid rgba(154, 226, 235, 0.34);
+      background: rgba(4, 20, 27, 0.72);
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ios-input::placeholder {
+      color: rgba(176, 216, 224, 0.62);
+    }
+
+    .ios-input:focus {
+      border-color: var(--aqua);
+      box-shadow: 0 0 0 3px rgba(56, 200, 216, 0.22);
+    }
+
+    .ios-submit {
+      flex-shrink: 0;
+      border: none;
+      border-radius: 13px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #06212B;
+      background: linear-gradient(135deg, #FFE18A, #FFB84D);
+      box-shadow: 0 6px 16px rgba(255, 196, 86, 0.28);
+      transition: transform 0.14s ease, filter 0.14s ease, opacity 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .ios-submit:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+    }
+
+    .ios-submit:active {
+      transform: translateY(0);
+    }
+
+    .ios-submit:disabled {
+      opacity: 0.72;
+      cursor: default;
+      transform: none;
+    }
+
+    .ios-status {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .ios-status[data-kind="success"] {
+      background: rgba(83, 227, 184, 0.14);
+      border: 1px solid rgba(83, 227, 184, 0.42);
+      color: #A8F7DF;
+    }
+
+    .ios-status[data-kind="error"] {
+      background: rgba(255, 118, 118, 0.14);
+      border: 1px solid rgba(255, 118, 118, 0.42);
+      color: #FFD1D1;
+    }
+
+    @media (max-width: 480px) {
+      .ios-form {
+        flex-direction: column;
+      }
+      .ios-submit {
+        width: 100%;
+      }
     }
 
     .social-list {
@@ -693,15 +789,65 @@
         </div>
       </section>
 
-      <!-- Card 2: iOS Status -->
+      <!-- Card 2: iOS Status & Launch Waitlist -->
       <section class="card" aria-labelledby="t-ios-title">
-        <div class="ios-row">
-          <div>
-            <h2 class="card-title" id="t-ios-title">🍎 iOS / App Store</h2>
-            <p class="ios-desc" id="t-ios-desc">iPhone &amp; iPad release in preparation</p>
-          </div>
-          <span class="badge badge-soon" id="t-ios-badge">Coming Soon</span>
+        <div class="card-head">
+          <h2 class="card-title" id="t-ios-title">🍎 iOS / App Store</h2>
+          <span class="badge badge-waitlist" id="t-ios-badge">Notify List</span>
         </div>
+        <p class="ios-desc" id="t-ios-desc">
+          iPhone &amp; iPad version is in App Store review — leave your email to get notified the moment it launches.
+        </p>
+
+        <iframe
+          name="ios-waitlist-target"
+          id="ios-waitlist-target"
+          style="display:none;"
+          aria-hidden="true"
+        ></iframe>
+
+        <form
+          id="ios-waitlist-form"
+          class="ios-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfNIoZebxK2hLUbK_LO6A11ewC8XzZZI36Mw0ol6XDj1tOfOw/formResponse"
+          method="POST"
+          target="ios-waitlist-target"
+          novalidate
+        >
+          <input
+            id="ios-email-input"
+            class="ios-input"
+            type="email"
+            name="entry.744796049"
+            autocomplete="email"
+            inputmode="email"
+            required
+            placeholder="you@example.com"
+            aria-label="Email Address"
+          />
+          <input
+            id="ios-locale-input"
+            type="hidden"
+            name="entry.1998801079"
+            value="en"
+          />
+          <button id="t-ios-btn" class="ios-submit" type="submit">🔔 Notify Me</button>
+        </form>
+
+        <div id="ios-status" class="ios-status" role="status" aria-live="polite" hidden></div>
+
+        <p class="trust-note" id="t-ios-trust">
+          🔒 One-time iOS launch alert only — zero spam. For Android Beta, use the Android section above.
+        </p>
+
+        <p class="direct-store-row">
+          <a
+            id="t-ios-direct"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfNIoZebxK2hLUbK_LO6A11ewC8XzZZI36Mw0ol6XDj1tOfOw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Or open the iOS Google Form directly ↗</a>
+        </p>
       </section>
 
       <!-- Card 3: Separate Community & Social -->
@@ -851,8 +997,14 @@
         supportPre: "Need help?",
         supportLink: "Email the developer",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone & iPad release in preparation",
-        iosBadge: "Coming Soon",
+        iosDesc: "iPhone & iPad version is in App Store review — leave your email to get notified the moment it launches.",
+        iosBadge: "Notify List",
+        iosPlaceholder: "you@example.com",
+        iosBtn: "🔔 Notify Me",
+        iosTrust: "🔒 One-time iOS launch alert only — zero spam. For Android Beta, use the Android section above.",
+        iosSuccess: "✅ You're on the iOS list! We'll email you once when My Little Aquarium launches on the App Store.",
+        iosInvalid: "Please enter a valid email address.",
+        iosDirect: "Or open the iOS Google Form directly ↗",
         commTitle: "💬 Community & Social",
         commDesc: "Optional spaces to share tanks, suggestions, and follow updates.",
         discordLabel: "Official Discord Community",
@@ -894,8 +1046,14 @@
         supportPre: "Sorun mu yaşıyorsunuz?",
         supportLink: "Geliştiriciye e-posta gönder",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone ve iPad sürümü hazırlanıyor",
-        iosBadge: "Çok Yakında",
+        iosDesc: "iPhone ve iPad sürümü App Store incelemesinde — yayınlandığı an haber almak için e-postanı bırak.",
+        iosBadge: "Kayıt Açık",
+        iosPlaceholder: "ornek@eposta.com",
+        iosBtn: "🔔 Haber Ver",
+        iosTrust: "🔒 Sadece iOS çıkışında 1 kez bildirim gönderilir — spam yok. Android Beta için yukarıdaki bölümü kullanın.",
+        iosSuccess: "✅ iOS listesine kaydın alındı! App Store'da yayınlandığı an sana haber vereceğiz.",
+        iosInvalid: "Lütfen geçerli bir e-posta adresi gir.",
+        iosDirect: "Veya doğrudan iOS Google Formunu aç ↗",
         commTitle: "💬 Topluluk ve Sosyal Medya",
         commDesc: "Akvaryumunu paylaşmak ve gelişmeleri takip etmek için isteğe bağlı kanallar.",
         discordLabel: "Resmi Discord Sunucusu",
@@ -937,8 +1095,14 @@
         supportPre: "Hilfe nötig?",
         supportLink: "Entwickler per E-Mail kontaktieren",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone- & iPad-Version in Vorbereitung",
-        iosBadge: "Bald verfügbar",
+        iosDesc: "Die iPhone- & iPad-Version ist in App-Store-Prüfung — hinterlasse deine E-Mail für eine Benachrichtigung zum Start.",
+        iosBadge: "Benachrichtigen",
+        iosPlaceholder: "name@beispiel.de",
+        iosBtn: "🔔 Benachrichtigen",
+        iosTrust: "🔒 Nur eine einmalige iOS-Startmail — kein Spam. Für die Android-Beta siehe Bereich oben.",
+        iosSuccess: "✅ Du stehst auf der iOS-Liste! Wir schreiben dir einmalig zum App-Store-Release.",
+        iosInvalid: "Bitte gib eine gültige E-Mail-Adresse ein.",
+        iosDirect: "Oder iOS-Google-Formular direkt öffnen ↗",
         commTitle: "💬 Community & Social",
         commDesc: "Optionale Kanäle für Tipps, Feedback und Aquarien-Vorstellungen.",
         discordLabel: "Offizieller Discord-Server",
@@ -980,8 +1144,14 @@
         supportPre: "Besoin d’aide ?",
         supportLink: "Écrire au développeur",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "Version iPhone & iPad en préparation",
-        iosBadge: "Bientôt disponible",
+        iosDesc: "La version iPhone & iPad est en validation App Store — laissez votre e-mail pour être prévenu dès la sortie.",
+        iosBadge: "Liste ouverte",
+        iosPlaceholder: "nom@exemple.fr",
+        iosBtn: "🔔 Me prévenir",
+        iosTrust: "🔒 Une seule alerte à la sortie iOS — zéro spam. Pour la bêta Android, voir la section ci-dessus.",
+        iosSuccess: "✅ Vous êtes sur la liste iOS ! Vous recevrez un seul e-mail dès le lancement sur l'App Store.",
+        iosInvalid: "Veuillez saisir une adresse e-mail valide.",
+        iosDirect: "Ou ouvrir directement le Google Form iOS ↗",
         commTitle: "💬 Communauté & Réseaux",
         commDesc: "Espaces optionnels pour partager vos aquariums et suivre l’actu.",
         discordLabel: "Serveur Discord officiel",
@@ -1023,8 +1193,14 @@
         supportPre: "¿Necesitas ayuda?",
         supportLink: "Escribir al desarrollador",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "Versión para iPhone y iPad en preparación",
-        iosBadge: "Próximamente",
+        iosDesc: "La versión de iPhone y iPad está en revisión del App Store — deja tu correo para avisarte en cuanto salga.",
+        iosBadge: "Lista abierta",
+        iosPlaceholder: "correo@ejemplo.com",
+        iosBtn: "🔔 Avísame",
+        iosTrust: "🔒 Solo un aviso al salir en iOS — cero spam. Para la beta de Android, usa la sección superior.",
+        iosSuccess: "✅ ¡Apuntado en la lista iOS! Te avisaremos una vez cuando salga en el App Store.",
+        iosInvalid: "Por favor, introduce un correo electrónico válido.",
+        iosDirect: "O abrir el formulario de Google de iOS ↗",
         commTitle: "💬 Comunidad y Redes",
         commDesc: "Espacios opcionales para compartir acuarios y novedades.",
         discordLabel: "Comunidad oficial en Discord",
@@ -1066,8 +1242,14 @@
         supportPre: "Precisa de ajuda?",
         supportLink: "Enviar e-mail ao desenvolvedor",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "Versão para iPhone e iPad em preparação",
-        iosBadge: "Em breve",
+        iosDesc: "Versão para iPhone e iPad em revisão na App Store — deixe seu e-mail para ser avisado no lançamento.",
+        iosBadge: "Lista aberta",
+        iosPlaceholder: "seu@email.com",
+        iosBtn: "🔔 Avisar-me",
+        iosTrust: "🔒 Apenas um aviso no lançamento do iOS — zero spam. Para o Beta Android, use a seção acima.",
+        iosSuccess: "✅ Você entrou na lista iOS! Vamos avisar uma única vez quando lançar na App Store.",
+        iosInvalid: "Por favor, digite um e-mail válido.",
+        iosDirect: "Ou abrir o Google Forms do iOS diretamente ↗",
         commTitle: "💬 Comunidade e Redes",
         commDesc: "Espaços opcionais para mostrar seus aquários e novidades.",
         discordLabel: "Comunidade Oficial no Discord",
@@ -1109,8 +1291,14 @@
         supportPre: "Serve aiuto?",
         supportLink: "Scrivi allo sviluppatore",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "Versione iPhone e iPad in preparazione",
-        iosBadge: "Prossimamente",
+        iosDesc: "La versione iPhone e iPad è in revisione su App Store — lascia la tua email per ricevere l'avviso all'uscita.",
+        iosBadge: "Lista aperta",
+        iosPlaceholder: "nome@esempio.it",
+        iosBtn: "🔔 Avvisami",
+        iosTrust: "🔒 Solo un avviso all'uscita iOS — zero spam. Per la Beta Android usa la sezione sopra.",
+        iosSuccess: "✅ Sei in lista per iOS! Ti avviseremo una sola volta al lancio su App Store.",
+        iosInvalid: "Inserisci un indirizzo email valido.",
+        iosDirect: "Oppure apri direttamente il Google Form iOS ↗",
         commTitle: "💬 Community e Social",
         commDesc: "Spazi facoltativi per condividere acquari e aggiornamenti.",
         discordLabel: "Community ufficiale Discord",
@@ -1152,8 +1340,14 @@
         supportPre: "Нужна помощь?",
         supportLink: "Написать разработчику",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "Версия для iPhone и iPad в разработке",
-        iosBadge: "Скоро",
+        iosDesc: "Версия для iPhone и iPad на проверке в App Store — оставьте email, чтобы получить уведомление в день выхода.",
+        iosBadge: "Список открыт",
+        iosPlaceholder: "name@example.com",
+        iosBtn: "🔔 Уведомить",
+        iosTrust: "🔒 Только одно письмо в день релиза iOS — без спама. Для Android-беты используйте блок выше.",
+        iosSuccess: "✅ Вы в списке ожидания iOS! Сообщим один раз сразу после выхода в App Store.",
+        iosInvalid: "Пожалуйста, введите корректный email.",
+        iosDirect: "Или открыть iOS-форму Google напрямую ↗",
         commTitle: "💬 Сообщество и соцсети",
         commDesc: "Необязательные каналы для общения и новостей.",
         discordLabel: "Официальный Discord-сервер",
@@ -1195,8 +1389,14 @@
         supportPre: "お困りですか？",
         supportLink: "開発者にメールする",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone・iPad版を準備中",
-        iosBadge: "近日公開",
+        iosDesc: "iPhone・iPad版はApp Store審査中です。公開時に1回だけ通知をお届けします。",
+        iosBadge: "通知受付中",
+        iosPlaceholder: "name@example.com",
+        iosBtn: "🔔 公開通知を受け取る",
+        iosTrust: "🔒 iOS公開時の1回限りの通知のみ・スパムなし（Androidベータは上のセクションへ）。",
+        iosSuccess: "✅ iOS通知リストに登録しました！App Store公開時にお知らせします。",
+        iosInvalid: "有効なメールアドレスを入力してください。",
+        iosDirect: "Googleフォームから直接登録する ↗",
         commTitle: "💬 コミュニティ＆SNS",
         commDesc: "水槽の共有や最新情報チェックはこちら（ベータ参加には任意）。",
         discordLabel: "公式 Discord コミュニティ",
@@ -1238,8 +1438,14 @@
         supportPre: "도움이 필요하신가요?",
         supportLink: "개발자에게 이메일 보내기",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone 및 iPad 출시 준비 중",
-        iosBadge: "출시 예정",
+        iosDesc: "iPhone 및 iPad 버전이 App Store 심사 중입니다. 출시 즉시 알림을 받으려면 이메일을 남겨주세요.",
+        iosBadge: "알림 신청",
+        iosPlaceholder: "name@example.com",
+        iosBtn: "🔔 출시 알림 받기",
+        iosTrust: "🔒 iOS 출시 시 단 1회만 알림을 보냅니다 — 스팸 없음 (Android 베타는 위 섹션 이용).",
+        iosSuccess: "✅ iOS 알림 명단에 등록되었습니다! App Store 출시 당일에 바로 알려드릴게요.",
+        iosInvalid: "올바른 이메일 주소를 입력해 주세요.",
+        iosDirect: "또는 iOS Google 폼에서 바로 신청하기 ↗",
         commTitle: "💬 커뮤니티 & 소셜",
         commDesc: "수조 자랑과 업데이트 소식을 위한 선택형 공간입니다.",
         discordLabel: "공식 Discord 커뮤니티",
@@ -1281,8 +1487,14 @@
         supportPre: "遇到问题？",
         supportLink: "联系开发者邮箱",
         iosTitle: "🍎 iOS / App Store",
-        iosDesc: "iPhone 与 iPad 版本筹备中",
-        iosBadge: "即将推出",
+        iosDesc: "iPhone 与 iPad 版本正在 App Store 审核中 — 留下邮箱，上线第一时间通知您。",
+        iosBadge: "开放预约",
+        iosPlaceholder: "name@example.com",
+        iosBtn: "🔔 上线通知我",
+        iosTrust: "🔒 仅在 iOS 正式上线时发送 1 次通知，绝无垃圾邮件（Android 封测请使用上方入口）。",
+        iosSuccess: "✅ 已加入 iOS 通知名单！App Store 上线后我们将第一时间邮件通知您。",
+        iosInvalid: "请输入有效的电子邮箱地址。",
+        iosDirect: "或直接打开 iOS Google 表单填写 ↗",
         commTitle: "💬 玩家社区与社交账号",
         commDesc: "分享造景、交流建议并获取最新动态。",
         discordLabel: "官方 Discord 社区",
@@ -1327,6 +1539,9 @@
       ["t-ios-title", "iosTitle"],
       ["t-ios-desc", "iosDesc"],
       ["t-ios-badge", "iosBadge"],
+      ["t-ios-btn", "iosBtn"],
+      ["t-ios-trust", "iosTrust"],
+      ["t-ios-direct", "iosDirect"],
       ["t-comm-title", "commTitle"],
       ["t-comm-desc", "commDesc"],
       ["t-discord-label", "discordLabel"],
@@ -1343,6 +1558,26 @@
       ["t-rules", "rules"]
     ];
 
+    const IOS_FORM_VIEW_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfNIoZebxK2hLUbK_LO6A11ewC8XzZZI36Mw0ol6XDj1tOfOw/viewform";
+    const WAITLIST_STORAGE_KEY = "mla_ios_waitlist_done";
+    let currentLang = "en";
+    let iosStatusKind = "";
+
+    function showIosStatus(kind, msg) {
+      const box = document.getElementById("ios-status");
+      if (!box) return;
+      iosStatusKind = kind;
+      if (!kind) {
+        box.hidden = true;
+        box.removeAttribute("data-kind");
+        box.textContent = "";
+        return;
+      }
+      box.hidden = false;
+      box.setAttribute("data-kind", kind);
+      box.textContent = msg;
+    }
+
     function detectLang() {
       const qs = new URLSearchParams(window.location.search).get("lang");
       const raw = (qs || navigator.language || "en").toLowerCase();
@@ -1355,6 +1590,7 @@
 
     function applyLang(code) {
       const lang = I18N[code] ? code : "en";
+      currentLang = lang;
       const t = I18N[lang];
       document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
       document.title = t.title;
@@ -1362,9 +1598,71 @@
         const el = document.getElementById(id);
         if (el && t[key]) el.textContent = t[key];
       }
+      const emailEl = document.getElementById("ios-email-input");
+      if (emailEl && t.iosPlaceholder) emailEl.placeholder = t.iosPlaceholder;
+      const localeEl = document.getElementById("ios-locale-input");
+      if (localeEl) localeEl.value = lang;
+      const directEl = document.getElementById("t-ios-direct");
+      if (directEl) {
+        directEl.href = `${IOS_FORM_VIEW_URL}?usp=pp_url&entry.1998801079=${encodeURIComponent(lang)}`;
+      }
+      let savedDone = false;
+      try {
+        savedDone = localStorage.getItem(WAITLIST_STORAGE_KEY) === "1";
+      } catch (_err) {}
+      if (iosStatusKind === "success" || savedDone) {
+        showIosStatus("success", t.iosSuccess);
+      } else if (iosStatusKind === "error") {
+        showIosStatus("error", t.iosInvalid);
+      }
       const sel = document.getElementById("lang-select");
       if (sel && sel.value !== lang) sel.value = lang;
     }
+
+    (function initIosWaitlist() {
+      const form = document.getElementById("ios-waitlist-form");
+      const emailEl = document.getElementById("ios-email-input");
+      const localeEl = document.getElementById("ios-locale-input");
+      const btnEl = document.getElementById("t-ios-btn");
+      const frameEl = document.getElementById("ios-waitlist-target");
+      if (!form || !emailEl || !localeEl || !btnEl || !frameEl) return;
+
+      let submitting = false;
+      let timerId = null;
+
+      function completeSubmit() {
+        if (!submitting) return;
+        submitting = false;
+        if (timerId) {
+          clearTimeout(timerId);
+          timerId = null;
+        }
+        try {
+          localStorage.setItem(WAITLIST_STORAGE_KEY, "1");
+        } catch (_err) {}
+        emailEl.value = "";
+        btnEl.disabled = false;
+        showIosStatus("success", I18N[currentLang].iosSuccess);
+      }
+
+      frameEl.addEventListener("load", completeSubmit);
+
+      form.addEventListener("submit", (e) => {
+        const val = emailEl.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+          e.preventDefault();
+          showIosStatus("error", I18N[currentLang].iosInvalid);
+          emailEl.focus();
+          return;
+        }
+        emailEl.value = val;
+        localeEl.value = currentLang;
+        showIosStatus("", "");
+        submitting = true;
+        btnEl.disabled = true;
+        timerId = setTimeout(completeSubmit, 950);
+      });
+    })();
 
     const selectEl = document.getElementById("lang-select");
     selectEl.addEventListener("change", (e) => applyLang(e.target.value));
